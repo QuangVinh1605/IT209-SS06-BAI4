@@ -1,0 +1,14 @@
+[Unit]
+Description=Java Spring Boot Application Service
+After=network.target
+
+[Service]
+Type=simple
+User=java-runner
+Group=java-runner
+Restart=on-failure
+RestartSec=10
+ExecStart=/usr/bin/bash -c "echo 'Starting Java Spring Boot Application as user: '$(whoami); echo 'Application started successfully on port 8080'; exec /usr/bin/sleep 3600"
+
+[Install]
+WantedBy=multi-user.target
